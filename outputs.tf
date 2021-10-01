@@ -1,10 +1,10 @@
-// Line to add in terraform cli to init backend
 output "backend_config_cli_string" {
-  value = "-backend-config='bucket=${var.bucket_tfstates_name}' -backend-config='region=${var.deploy_region}' -backend-config='encrypt=true' -backend-config='kms_key_id=${aws_kms_key.kms_tfstates.arn}' -backend-config='dynamodb_table=${aws_dynamodb_table.dynamodb_tfstates.name}'"
+  description = "Line to add in terraform cli to init backend"
+  value       = "-backend-config='bucket=${var.bucket_tfstates_name}' -backend-config='region=${var.deploy_region}' -backend-config='encrypt=true' -backend-config='kms_key_id=${aws_kms_key.kms_tfstates.arn}' -backend-config='dynamodb_table=${aws_dynamodb_table.dynamodb_tfstates.name}'"
 }
 
-// Map to add in your backend configuration
 output "backend_config_map" {
+  description = "Map to add in your backend configuration"
   value = {
     bucket         = var.bucket_tfstates_name
     region         = var.deploy_region
@@ -14,18 +14,18 @@ output "backend_config_map" {
   }
 }
 
-// ARN of the produced kms key for users' grants
 output "kms_tfstates" {
-  value = aws_kms_key.kms_tfstates.arn
+  description = "ARN of the produced kms key for users grants"
+  value       = aws_kms_key.kms_tfstates.arn
 }
 
-// ARN of the created s3 bucket for usage in policies
 output "s3_tfstates" {
-  value = aws_s3_bucket.bucket_tfstates.arn
+  description = "ARN of the created s3 bucket for usage in policies"
+  value       = aws_s3_bucket.bucket_tfstates.arn
 }
 
-// ARN of the dynamodb table created
 output "dynamodb_tfstates" {
-  value = aws_dynamodb_table.dynamodb_tfstates.arn
+  description = "ARN of the dynamodb table created"
+  value       = aws_dynamodb_table.dynamodb_tfstates.arn
 }
 

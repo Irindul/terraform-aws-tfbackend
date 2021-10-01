@@ -19,12 +19,9 @@ resource "aws_s3_bucket" "bucket_tfstates" {
 
   policy = data.aws_iam_policy_document.bucket_tfstates_policy.json
 
-  tags = merge(
-    {
-      "Name" = var.bucket_tfstates_name
-    },
-    var.tags,
-  )
+  tags = {
+    "Name" = var.bucket_tfstates_name
+  }
 
   lifecycle {
     prevent_destroy = true

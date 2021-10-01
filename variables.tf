@@ -1,25 +1,19 @@
-// Name of the s3 bucket
 variable "bucket_tfstates_name" {
-  type = string
+  type        = string
+  description = "Name of the S3 bucket"
 }
 
-// Region where the objects will be deployed
 variable "deploy_region" {
-  type = string
+  type        = string
+  description = "Region where the objects will be deployed"
 }
 
-// List of infrastructure administrators
 variable "administrators" {
-  type = list(string)
+  type        = list(string)
+  description = "List of infrastructure administrators"
 }
 
-// List of Terraform users
 variable "users" {
-  type = list(string)
+  type        = list(string)
+  description = "List of Terraform users"
 }
-
-// Tags to apply on s3_bucket
-variable "tags" {
-  type = map(string)
-}
-
