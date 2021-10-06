@@ -4,12 +4,9 @@ resource "aws_dynamodb_table" "dynamodb_tfstates" {
   write_capacity = 5
   hash_key       = "LockID"
 
-  tags = merge(
-    {
-      "Name" = format("%s", "${var.bucket_tfstates_name}-lock")
-    },
-    var.tags,
-  )
+  tags = {
+    "Name" = format("%s", "${var.bucket_tfstates_name}-lock")
+  }
 
   attribute {
     name = "LockID"
